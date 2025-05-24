@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>แยกประเภทขยะอัตโนมัติ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>อัปโหลดภาพขยะ</h1>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <button type="submit">วิเคราะห์</button>
+    </form>
+
+    {% if result %}
+      <h2>ผลลัพธ์: {{ result }}</h2>
+      {% if bin_image %}
+        <img src="{{ url_for('static', filename=bin_image) }}" alt="ประเภทถังขยะ" style="width:200px;">
+      {% endif %}
+    {% endif %}
+  </div>
+</body>
+</html>
